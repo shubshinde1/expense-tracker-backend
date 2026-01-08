@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema(
     },
     ProfilerUrl: {
       type: String,
-      default: "",
+      default: "https://www.behance.net/gallery/148207527/3D-Avatars",
     },
     isActive: {
       type: Boolean,

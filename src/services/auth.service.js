@@ -19,6 +19,23 @@ const createUser = async ({ email, phone, name, password }) => {
   return user;
 };
 
+const loginUser = async ({ email, password }) => {
+  const user = await User.findOne({ email });
+
+  if (!user) {
+    throw new Error("User not found");
+  }
+
+  const isMatch = await user.comparePassword(password);
+
+  if (!isMatch) {
+    throw new Error("Invalid Email or Password");
+  }
+
+  return user;
+};
+
 module.exports = {
   createUser,
+  loginUser,
 };
