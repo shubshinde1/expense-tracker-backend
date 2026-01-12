@@ -1,4 +1,5 @@
 const User = require("../models/User.model");
+const { seedDefaultCategories } = require("./category.service");
 
 const createUser = async ({ email, phone, name, password }) => {
   const existingUser = await User.findOne({
@@ -15,6 +16,9 @@ const createUser = async ({ email, phone, name, password }) => {
     name,
     password,
   });
+
+  // Adding default categories to user
+  await seedDefaultCategories(user._id);
 
   return user;
 };

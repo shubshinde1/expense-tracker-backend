@@ -5,6 +5,8 @@ const authMiddleware = require("./middlewares/auth.middleware");
 
 const authRoutes = require("./routes/auth.routes");
 
+const categoryRoutes = require("./routes/category.routes");
+
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
@@ -20,6 +22,6 @@ app.get("/api/protected", authMiddleware, (req, res) => {
   });
 });
 
+app.use("/api/categories", categoryRoutes);
+
 module.exports = app;
-
-
