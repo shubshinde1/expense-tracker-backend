@@ -1,4 +1,6 @@
 const express = require("express");
+const cors = require("cors");
+
 const app = express();
 
 const authMiddleware = require("./middlewares/auth.middleware");
@@ -6,6 +8,13 @@ const authMiddleware = require("./middlewares/auth.middleware");
 const authRoutes = require("./routes/auth.routes");
 
 const categoryRoutes = require("./routes/category.routes");
+
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL,
+    credentials: true,
+  }),
+);
 
 app.use(express.json());
 
